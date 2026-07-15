@@ -257,6 +257,7 @@ header{
     background-size: cover;
     background-attachment: fixed;
     padding: 80px 20px;
+    min-height: 100vh;
 }
 
 #gallery .section-title{

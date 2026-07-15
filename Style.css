@@ -293,7 +293,7 @@ header{
 
 #gallery{
     background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)),
-    url("GalleryBG.jpg") no-repeat center center;
+    url("GalleryBg.jpg") no-repeat center center;
     background-size: cover;
     background-attachment: fixed;
     padding: 80px 20px;

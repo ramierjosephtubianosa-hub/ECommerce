@@ -251,7 +251,7 @@ header{
 }
 
 #gallery{
-    background: url("GalleryBG.jpg") no-repeat center center;
+    background-image: url("GalleryBG.jpg") no-repeat center center;
     background-size: cover;
     background-attachment: fixed;
     padding: 80px 20px;

@@ -250,8 +250,10 @@ header{
     font-weight:bold;
 }
 
-#gallery{
-    background-image: url("GalleryBG.jpg") no-repeat center center;
+#gallery {
+    background-image: url("GalleryBG.jpg");
+    background-repeat: no-repeat;
+    background-position: center center;
     background-size: cover;
     background-attachment: fixed;
     padding: 80px 20px;

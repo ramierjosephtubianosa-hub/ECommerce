@@ -124,7 +124,7 @@ header{
 }
 
 #hero h1{
-    font-size:3.5rem;
+    font-size:3rem;
     margin-bottom:20px;
     letter-spacing:3px;
 }
@@ -251,13 +251,10 @@ header{
 }
 
 #gallery {
-    background-image: url("GalleryBG.jpg");
-    background-repeat: no-repeat;
-    background-position: center center;
+    background: url("GalleryBG.jpg") no-repeat center center;
     background-size: cover;
     background-attachment: fixed;
     padding: 80px 20px;
-    min-height: 100vh;
 }
 
 #gallery .section-title{

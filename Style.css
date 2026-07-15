@@ -135,6 +135,32 @@ header{
     margin-bottom:30px;
 }
 
+.marquee {
+    width: 100%;
+    overflow: hidden;
+    background: #d6d66c;
+    padding: 20px 0;
+    white-space: nowrap;
+}
+
+.marquee p {
+    display: inline-block;
+    font-size: 2rem;
+    font-weight: bold;
+    color: #111;
+    padding-left: 100%; /* Start outside the screen */
+    animation: marquee 15s linear infinite;
+}
+
+@keyframes marquee {
+    from {
+        transform: translateX(0);
+    }
+    to {
+        transform: translateX(-200%);
+    }
+}
+
 .menu-container{
     display:flex;
     flex-wrap:wrap;

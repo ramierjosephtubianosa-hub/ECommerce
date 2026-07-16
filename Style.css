@@ -302,6 +302,16 @@ header{
     transform:scale(1.05);
 }
 
+#previewImage{
+    max-width:90%;
+    max-height:90%;
+    transition:transform .15s ease;
+    transform-origin:center center;
+    cursor:grab;
+    user-select:none;
+    -webkit-user-drag:none;
+}
+
 /* Modal */
 .modal{
     display:none;
@@ -391,7 +401,6 @@ header{
     transform:scale(1.1);
 }
 
-
 #reservation{
     background: #d9df84;
     background-image: url('Reserve.png');
@@ -437,8 +446,9 @@ header{
 .modal-content{
     max-width:90%;
     max-height:85%;
-    border-radius:10px;
-    animation:zoom .3s;
+    transition:transform .2s ease;
+    transform:scale(1);
+    transform-origin:center center;
 }
 
 @keyframes zoom{

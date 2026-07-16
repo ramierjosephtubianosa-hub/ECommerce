@@ -291,7 +291,6 @@ header{
     font-weight:bold;
 }
 
-/* Menu Images */
 .menu-img{
     width:200px;
     cursor:pointer;
@@ -326,7 +325,6 @@ header{
     align-items:center;
 }
 
-/* Preview Image */
 .modal-content{
     max-width:90%;
     max-height:90%;
@@ -334,7 +332,6 @@ header{
     animation:zoom .3s ease;
 }
 
-/* Close Button */
 .close{
     position:absolute;
     top:20px;

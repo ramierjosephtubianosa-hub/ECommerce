@@ -4,6 +4,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Avisha's Hidden Haven - Delicious shakes, pizza, halo-halo, fries, shawarma and more.">
     <title>Avisha's Hidden Haven</title>
     <link rel="stylesheet" href="Style.css">
 </head>
@@ -233,9 +234,11 @@ Set of 3: ₱1449
     <div class="gallery-item"><img src="DD.jpg" alt="Gallery Image 24"></div>
 </div>
 </div>
-        <div id="imageModal" class="modal">
+    <div id="imageModal" class="modal">
     <span class="close">&times;</span>
+    <span class="prev">&#10094;</span>
     <img class="modal-content" id="previewImage">
+    <span class="next">&#10095;</span>
 </div>
 
 <script>
@@ -266,6 +269,39 @@ document.addEventListener("keydown", e => {
         modal.style.display = "none";
     }
 });
+const images = [...document.querySelectorAll(".card img, .gallery-item img")];
+const prevBtn = document.querySelector(".prev");
+const nextBtn = document.querySelector(".next");
+
+let currentIndex = 0;
+
+images.forEach((img, index) => {
+    img.addEventListener("click", () => {
+        currentIndex = index;
+        preview.src = img.src;
+        preview.alt = img.alt;
+        modal.style.display = "flex";
+    });
+});
+
+function showImage(index){
+    if(index < 0) index = images.length - 1;
+    if(index >= images.length) index = 0;
+
+    currentIndex = index;
+    preview.src = images[currentIndex].src;
+    preview.alt = images[currentIndex].alt;
+}
+
+nextBtn.onclick = () => showImage(currentIndex + 1);
+prevBtn.onclick = () => showImage(currentIndex - 1);
+
+document.addEventListener("keydown", e=>{
+    if(modal.style.display==="flex"){
+        if(e.key==="ArrowRight") showImage(currentIndex+1);
+        if(e.key==="ArrowLeft") showImage(currentIndex-1);
+    }
+});
 </script>
 </section>
 
@@ -281,7 +317,8 @@ document.addEventListener("keydown", e => {
                     <h3>Contact Us</h3>
                     <p><strong>Phone:</strong> +63 915 014 3191</p>
                     <p><strong>Email:</strong> avisha'shiddenhaven@gmail.com</p>
-                    <p><strong>Facebook Page:</strong> <a href="https://www.facebook.com/AvishaFoodPlace" target="_blank">Avisha's Hidden Haven</a></p>
+                    <p><strong>Facebook Page:</strong> <a href="https://www.facebook.com/AvishaFoodPlace"target="_blank"
+   rel="noopener noreferrer">Avisha's Hidden Haven</a></p>
                 </div>
                 <form class="booking-form" onsubmit="alert('Reservation Request Submitted! We will contact you shortly.'); return false;">
                     <input type="text" placeholder="Your Name" required>

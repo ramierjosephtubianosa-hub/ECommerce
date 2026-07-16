@@ -240,67 +240,250 @@ Set of 3: ₱1449
     <img class="modal-content" id="previewImage">
     <span class="next">&#10095;</span>
 </div>
+<div id="imageModal" class="modal">
+    <span class="close">&times;</span>
+
+    <button class="prev">&#10094;</button>
+
+    <img id="previewImage" alt="Preview">
+
+    <button class="next">&#10095;</button>
+
+    <div class="zoom-controls">
+        <button id="zoomOut">−</button>
+        <button id="zoomIn">+</button>
+    </div>
+</div>
 
 <script>
 const modal = document.getElementById("imageModal");
 const preview = document.getElementById("previewImage");
+
 const closeBtn = document.querySelector(".close");
-
-document.querySelectorAll(".card img, .gallery-item img").forEach(img => {
-    img.addEventListener("click", () => {
-        modal.style.display = "flex";
-        preview.src = img.src;
-        preview.alt = img.alt;
-    });
-});
-
-closeBtn.onclick = () => {
-    modal.style.display = "none";
-};
-
-modal.onclick = e => {
-    if (e.target === modal) {
-        modal.style.display = "none";
-    }
-};
-
-document.addEventListener("keydown", e => {
-    if (e.key === "Escape") {
-        modal.style.display = "none";
-    }
-});
-const images = [...document.querySelectorAll(".card img, .gallery-item img")];
 const prevBtn = document.querySelector(".prev");
 const nextBtn = document.querySelector(".next");
 
+const zoomInBtn = document.getElementById("zoomIn");
+const zoomOutBtn = document.getElementById("zoomOut");
+
+const images = [...document.querySelectorAll(".card img, .gallery-item img")];
+
 let currentIndex = 0;
 
+// Zoom
+let scale = 1;
+
+// Drag
+let isDragging = false;
+let startX = 0;
+let startY = 0;
+let translateX = 0;
+let translateY = 0;
+
+//-------------------------
+// Open Image
+//-------------------------
 images.forEach((img, index) => {
     img.addEventListener("click", () => {
         currentIndex = index;
-        preview.src = img.src;
-        preview.alt = img.alt;
+        showImage();
         modal.style.display = "flex";
     });
 });
 
-function showImage(index){
-    if(index < 0) index = images.length - 1;
-    if(index >= images.length) index = 0;
-
-    currentIndex = index;
+//-------------------------
+// Show Image
+//-------------------------
+function showImage() {
     preview.src = images[currentIndex].src;
     preview.alt = images[currentIndex].alt;
+    resetZoom();
 }
 
-nextBtn.onclick = () => showImage(currentIndex + 1);
-prevBtn.onclick = () => showImage(currentIndex - 1);
+//-------------------------
+// Next
+//-------------------------
+function nextImage() {
+    currentIndex = (currentIndex + 1) % images.length;
+    showImage();
+}
 
-document.addEventListener("keydown", e=>{
-    if(modal.style.display==="flex"){
-        if(e.key==="ArrowRight") showImage(currentIndex+1);
-        if(e.key==="ArrowLeft") showImage(currentIndex-1);
+//-------------------------
+// Previous
+//-------------------------
+function prevImage() {
+    currentIndex = (currentIndex - 1 + images.length) % images.length;
+    showImage();
+}
+
+//-------------------------
+// Update Transform
+//-------------------------
+function updateTransform() {
+    preview.style.transform =
+        `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+}
+
+//-------------------------
+// Reset Zoom & Position
+//-------------------------
+function resetZoom() {
+    scale = 1;
+    translateX = 0;
+    translateY = 0;
+    updateTransform();
+}
+
+//-------------------------
+// Zoom Buttons
+//-------------------------
+zoomInBtn.addEventListener("click", () => {
+    scale = Math.min(scale + 0.2, 5);
+    updateTransform();
+});
+
+zoomOutBtn.addEventListener("click", () => {
+    scale = Math.max(scale - 0.2, 1);
+    if(scale === 1){
+        translateX = 0;
+        translateY = 0;
     }
+    updateTransform();
+});
+
+//-------------------------
+// Mouse Wheel Zoom
+//-------------------------
+preview.addEventListener("wheel", function(e){
+
+    if(modal.style.display !== "flex") return;
+
+    e.preventDefault();
+
+    if(e.deltaY < 0){
+        scale += 0.2;
+    }else{
+        scale -= 0.2;
+    }
+
+    scale = Math.max(1, Math.min(scale,5));
+
+    if(scale === 1){
+        translateX = 0;
+        translateY = 0;
+    }
+
+    updateTransform();
+
+});
+
+//-------------------------
+// Drag Image
+//-------------------------
+preview.addEventListener("mousedown", function(e){
+
+    if(scale <= 1) return;
+
+    isDragging = true;
+
+    startX = e.clientX - translateX;
+    startY = e.clientY - translateY;
+
+    preview.style.cursor = "grabbing";
+
+});
+
+document.addEventListener("mousemove", function(e){
+
+    if(!isDragging) return;
+
+    translateX = e.clientX - startX;
+    translateY = e.clientY - startY;
+
+    updateTransform();
+
+});
+
+document.addEventListener("mouseup", function(){
+
+    isDragging = false;
+
+    preview.style.cursor = scale > 1 ? "grab" : "default";
+
+});
+
+//-------------------------
+// Close Modal
+//-------------------------
+function closeModal(){
+
+    modal.style.display = "none";
+
+    resetZoom();
+
+}
+
+closeBtn.addEventListener("click", closeModal);
+
+//-------------------------
+// Previous / Next
+//-------------------------
+nextBtn.addEventListener("click", nextImage);
+prevBtn.addEventListener("click", prevImage);
+
+//-------------------------
+// Click Outside
+//-------------------------
+modal.addEventListener("click", function(e){
+
+    if(e.target === modal){
+
+        closeModal();
+
+    }
+
+});
+
+//-------------------------
+// Keyboard
+//-------------------------
+document.addEventListener("keydown", function(e){
+
+    if(modal.style.display !== "flex") return;
+
+    switch(e.key){
+
+        case "Escape":
+            closeModal();
+            break;
+
+        case "ArrowRight":
+            nextImage();
+            break;
+
+        case "ArrowLeft":
+            prevImage();
+            break;
+
+        case "+":
+        case "=":
+            scale = Math.min(scale + 0.2,5);
+            updateTransform();
+            break;
+
+        case "-":
+            scale = Math.max(scale - 0.2,1);
+
+            if(scale === 1){
+                translateX = 0;
+                translateY = 0;
+            }
+
+            updateTransform();
+            break;
+
+    }
+
 });
 </script>
 </section>
@@ -355,6 +538,7 @@ document.addEventListener("click", function () {
     music.play();
 }, { once: true });
 </script>
+
 
 </body>
 </html>

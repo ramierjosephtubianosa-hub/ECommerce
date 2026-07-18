@@ -189,67 +189,39 @@ const grandTotal = document.getElementById("grandTotal");
 if (orderBody && summaryBody && grandTotal) {
 
     function createRow() {
+    // Clone the first order row
+    const row = orderBody.rows[0].cloneNode(true);
 
-        const row = document.createElement("tr");
+    // Reset values
+    row.querySelector(".product").selectedIndex = 0;
+    row.querySelector(".qty").value = 1;
+    row.querySelector(".shipping").selectedIndex = 0;
+    row.querySelector(".payment").selectedIndex = 0;
 
-        row.innerHTML = `
-            <td>
-                <select class="product">
-                    <option value="129">Mango Graham Shake</option>
-                    <option value="129">Classic Avocado Shake</option>
-                    <option value="119">Creamy Melon Shake</option>
-                    <option value="139">Chocolate Oreo Shake</option>
-                </select>
-            </td>
+    orderBody.appendChild(row);
 
-            <td>
-                <input type="number" class="qty" value="1" min="1">
-            </td>
+    // Reattach button and input events
+    attachEvents(row);
 
-            <td>
-                <select class="shipping">
-                    <option>Standard</option>
-                    <option>Express</option>
-                    <option>Pickup</option>
-                </select>
-            </td>
+    updateSummary();
+}
 
-            <td>
-                <select class="payment">
-                    <option>Cash</option>
-                    <option>GCash</option>
-                    <option>Card</option>
-                </select>
-            </td>
+ function attachEvents(row) {
 
-            <td>
-                <button type="button" class="addBtn">+</button>
-                <button type="button" class="deleteBtn">🗑</button>
-            </td>
-        `;
+    row.querySelector(".product").addEventListener("change", updateSummary);
+    row.querySelector(".qty").addEventListener("input", updateSummary);
+    row.querySelector(".shipping").addEventListener("change", updateSummary);
+    row.querySelector(".payment").addEventListener("change", updateSummary);
 
-        orderBody.appendChild(row);
-        attachEvents(row);
-        updateSummary();
-    }
+    row.querySelector(".addBtn").addEventListener("click", createRow);
 
-    function attachEvents(row) {
-
-        row.querySelector(".product").addEventListener("change", updateSummary);
-        row.querySelector(".qty").addEventListener("input", updateSummary);
-
-        row.querySelector(".addBtn").addEventListener("click", createRow);
-
-        row.querySelector(".deleteBtn").addEventListener("click", () => {
-
-            if (orderBody.rows.length > 1) {
-                row.remove();
-                updateSummary();
-            }
-
-        });
-
-    }
+    row.querySelector(".deleteBtn").addEventListener("click", () => {
+        if (orderBody.rows.length > 1) {
+            row.remove();
+            updateSummary();
+        }
+    });
+}
 
     function updateSummary() {
 

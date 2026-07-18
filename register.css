@@ -1,0 +1,150 @@
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial, Helvetica, sans-serif;
+}
+
+body{
+    background:linear-gradient(135deg,#d9eb72,#d8cd32);
+    background-image: url('A.jpg');
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    min-height:100vh;
+    padding:20px;
+}
+
+.container{
+    width:100%;
+    max-width:600px;
+}
+
+.form-box{
+    background:#f3e075;
+    background-image: url('LogBG.png');
+    background-size: cover;
+    background-position: center;
+    padding:30px;
+    border-radius:12px;
+    box-shadow:0 10px 25px rgba(0,0,0,.2);
+}
+
+h2{
+    text-align:center;
+    margin-bottom:25px;
+    color:#333;
+}
+
+.input-group{
+    margin-bottom:18px;
+}
+
+.input-group label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:bold;
+    color:#444;
+}
+
+.input-group input,
+.input-group textarea{
+    width:100%;
+    padding:12px;
+    border:1px solid #ccc;
+    border-radius:6px;
+    font-size:15px;
+    transition:.3s;
+}
+
+.input-group input:focus,
+.input-group textarea:focus{
+    outline:none;
+    border-color:#4facfe;
+    box-shadow:0 0 5px rgba(79,172,254,.5);
+}
+
+textarea{
+    resize:vertical;
+}
+
+.gender{
+    display:flex;
+    gap:20px;
+    flex-wrap:wrap;
+}
+
+.gender label{
+    font-weight:normal;
+    display:flex;
+    align-items:center;
+    gap:5px;
+}
+
+.buttons{
+    display:flex;
+    gap:15px;
+    margin-top:25px;
+}
+
+.buttons input{
+    flex:1;
+    padding:12px;
+    border:none;
+    border-radius:6px;
+    font-size:16px;
+    cursor:pointer;
+    transition:.3s;
+}
+
+.buttons input[type="submit"]{
+    background:#28a745;
+    color:#fff;
+}
+
+.buttons input[type="submit"]:hover{
+    background:#218838;
+}
+
+.buttons input[type="reset"]{
+    background:#dc3545;
+    color:#fff;
+}
+
+.buttons input[type="reset"]:hover{
+    background:#c82333;
+}
+
+input:valid,
+textarea:valid{
+    border-color:#28a745;
+}
+
+input:invalid:focus,
+textarea:invalid:focus{
+    border-color:#dc3545;
+}
+
+@media(max-width:600px){
+
+    .form-box{
+        padding:20px;
+    }
+
+    .buttons{
+        flex-direction:column;
+    }
+
+    .gender{
+        flex-direction:column;
+        gap:10px;
+    }
+
+    h3{
+    text-align:left;
+    font-size:15px;
+    margin-bottom:10px;
+    margin-top:10px;
+        color:#333;
+}
+}

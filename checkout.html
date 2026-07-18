@@ -1,0 +1,541 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Checkout Page</title>
+    <link rel="stylesheet" href="checkout.css">
+</head>
+<body>
+    
+       <header>
+        <div class="container navbar">
+            <div class="logo">Avisha's Hidden Haven CheckOut</div>
+            <nav>
+                <ul class="nav-links">
+                  <li><a href="index.html#hero">Home</a></li>
+                  <li><a href="index.html#menu">Menu</a></li>
+                  <li><a href="index.html#gallery">Gallery</a></li>
+                  <li><a href="index.html#reservation">Contact & Reservation</a></li>
+                </ul>
+                </ul>
+            </nav>
+        </div>
+    </header>
+
+<div class="checkout-container">
+
+    <form action="#">
+
+        <section class="card">
+            <h2>Customer Information</h2>
+
+            <div class="input-group">
+                <label>Full Name</label>
+                <input type="text" placeholder="Enter your full name" required>
+            </div>
+
+            <div class="input-group">
+                <label>Email</label>
+                <input type="email" placeholder="Enter your email" required>
+            </div>
+
+            <div class="input-group">
+                <label>Address</label>
+                <textarea placeholder="Enter your complete address" required></textarea>
+            </div>
+
+            <div class="input-group">
+                <label>Phone Number</label>
+                <input type="tel" placeholder="09123456789" required>
+            </div>
+    <center><p class="note">Note: Please ensure that your contact information is accurate for order confirmation and delivery purposes.</p></center>
+    <center>
+    <p class="form-link">
+    Don't have an account?
+    <a href="register.html">Sign Up</a>
+        Already have an account?
+    <a href="login.html">Login</a>
+    </p>
+    </center>
+        </section>
+
+        <section class="card">
+    <h2>Order Information</h2>
+
+    <table id="orderTable">
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Qty</th>
+                <th>Shipping</th>
+                <th>Payment</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+        <tbody id="orderBody">
+            <tr>
+                <td>
+                    <select class="product">
+                        <option value="129">Mango Graham Shake</option>
+                        <option value="129">Classic Avocado Shake</option>
+                        <option value="129">Creamy Melon Shake</option>
+                        <option value="129">Strawberry Gream Shake</option>
+                        <option value="135">Avisha's Special Halo Halo</option>
+                        <option value="135">Avisha's Special Ube Macapuno Shake</option>
+                        <option value="49">Cheese French Fries</option>
+                        <option value="49">Sour CreamFrench Fries</option>
+                        <option value="49">BBQ French Fries</option>
+                        <option value="59">Nachos</option>
+                        <option value="69">Beef Shawarma</option>
+                        <option value="85">Creamy Iced Coffee Float</option>
+                        <option value="85">Creamy Iced Matcha Float</option>
+                        <option value="85">Creamy Choco Float</option>
+                        <option value="85">Creamy Strawberry Float</option>
+                        <option value="85">Creamy Blueberry Float</option>
+                        <option value="99">Creamy Strawberry Matcha Float</option>
+                        <option value="99">Creamy Blueberry Matcha Float</option>
+                        <option value="100">Creamy Iced Coffee Float</option>
+                        <option value="100">Creamy Iced Matcha Float</option>
+                        <option value="100">Creamy Choco Float</option>
+                        <option value="100">Creamy Strawberry Float</option>
+                        <option value="100">Creamy Blueberry Float</option>
+                        <option value="115">Creamy Strawberry Matcha Float</option>
+                        <option value="115">Creamy Blueberry Matcha Float</option>
+                        <option value="189">All Cheese</option>
+                        <option value="195">Ham & Cheese</option>
+                        <option value="198">Hawaiian</option>
+                        <option value="225">Pepperoni</option>
+                        <option value="235">Meat & Pepper</option>
+                        <option value="269">Shawarma</option>
+                        <option value="375">Lechon Roll(Solo)</option>
+                        <option value="1109">Lechon Roll(Set of 3)</option>
+                        <option value="375">Baby Back Ribs(Solo)</option>
+                        <option value="1109">Baby Back Ribs(Set of 3)</option>
+                        <option value="489">Chick n' Roll(Solo)</option>
+                        <option value="1449">Chick n' Roll(Set of 3)</option>
+                    </select>
+                </td>
+
+                <td>
+                    <input type="number" class="qty" value="1" min="1">
+                </td>
+
+                <td>
+                    <select class="shipping">
+                        <option>Dine In</option>
+                        <option>Delivery</option>
+                        <option>Pickup</option>
+                    </select>
+                </td>
+
+                <td>
+                    <select class="payment">
+                        <option>Cash</option>
+                        <option>GCash</option>
+                        <option>Card</option>
+                    </select>
+                </td>
+
+                <td>
+                    <button type="button" class="addBtn">+</button>
+                    <button type="button" class="deleteBtn">🗑</button>
+                </td>
+            </tr>
+        </tbody>
+    </table>
+</section>
+
+<section class="card">
+    <h2>Order Summary</h2>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Product</th>
+                <th>Qty</th>
+                <th>Price</th>
+                <th>Total</th>
+                <th>Action</th>
+            </tr>
+        </thead>
+
+<tbody id="summaryBody"></tbody>
+
+        <tfoot>
+            <tr class="grand-total">
+                <td colspan="3"><strong>Grand Total</strong></td>
+                <td id="grandTotal"><strong>₱0.00</strong></td>
+                <td></td>
+            </tr>
+        </tfoot>
+    </table>
+</section>
+
+        <div class="buttons">
+            <button type="submit" class="place-btn">Place Order</button>
+            <button type="reset" class="cancel-btn">Cancel</button>
+        </div>
+
+    </form>
+
+<script>
+
+const orderBody = document.getElementById("orderBody");
+const summaryBody = document.getElementById("summaryBody");
+const grandTotal = document.getElementById("grandTotal");
+
+if (orderBody && summaryBody && grandTotal) {
+
+    function createRow() {
+
+        const row = document.createElement("tr");
+
+        row.innerHTML = `
+            <td>
+                <select class="product">
+                    <option value="129">Mango Graham Shake</option>
+                    <option value="129">Classic Avocado Shake</option>
+                    <option value="119">Creamy Melon Shake</option>
+                    <option value="139">Chocolate Oreo Shake</option>
+                </select>
+            </td>
+
+            <td>
+                <input type="number" class="qty" value="1" min="1">
+            </td>
+
+            <td>
+                <select class="shipping">
+                    <option>Standard</option>
+                    <option>Express</option>
+                    <option>Pickup</option>
+                </select>
+            </td>
+
+            <td>
+                <select class="payment">
+                    <option>Cash</option>
+                    <option>GCash</option>
+                    <option>Card</option>
+                </select>
+            </td>
+
+            <td>
+                <button type="button" class="addBtn">+</button>
+                <button type="button" class="deleteBtn">🗑</button>
+            </td>
+        `;
+
+        orderBody.appendChild(row);
+        attachEvents(row);
+        updateSummary();
+    }
+
+    function attachEvents(row) {
+
+        row.querySelector(".product").addEventListener("change", updateSummary);
+        row.querySelector(".qty").addEventListener("input", updateSummary);
+
+        row.querySelector(".addBtn").addEventListener("click", createRow);
+
+        row.querySelector(".deleteBtn").addEventListener("click", () => {
+
+            if (orderBody.rows.length > 1) {
+                row.remove();
+                updateSummary();
+            }
+
+        });
+
+    }
+
+    function updateSummary() {
+
+        summaryBody.innerHTML = "";
+
+        let grand = 0;
+
+        [...orderBody.rows].forEach((row, index) => {
+
+            const product = row.querySelector(".product");
+            const qty = parseInt(row.querySelector(".qty").value) || 1;
+            const price = parseFloat(product.value);
+            const total = qty * price;
+
+            grand += total;
+
+            const summaryRow = document.createElement("tr");
+
+            summaryRow.innerHTML = `
+                <td>${product.options[product.selectedIndex].text}</td>
+                <td>${qty}</td>
+                <td>₱${price.toFixed(2)}</td>
+                <td>₱${total.toFixed(2)}</td>
+                <td>
+                    <button onclick="removeRow(${index})">🗑</button>
+                </td>
+            `;
+
+            summaryBody.appendChild(summaryRow);
+
+        });
+
+        grandTotal.innerHTML = "<strong>₱" + grand.toFixed(2) + "</strong>";
+
+    }
+
+    window.removeRow = function(index) {
+
+        if (orderBody.rows.length > 1) {
+            orderBody.rows[index].remove();
+            updateSummary();
+        }
+
+    };
+
+    attachEvents(orderBody.rows[0]);
+    updateSummary();
+}
+
+const buttons = document.querySelectorAll(".addCart");
+
+buttons.forEach(btn => {
+
+    btn.addEventListener("click", () => {
+
+        const item = {
+            name: btn.dataset.name,
+            price: Number(btn.dataset.price),
+            qty: 1
+        };
+
+        let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+        const existing = cart.find(p => p.name === item.name);
+
+        if (existing) {
+            existing.qty++;
+        } else {
+            cart.push(item);
+        }
+
+        localStorage.setItem("cart", JSON.stringify(cart));
+
+        window.location.href = "checkout.html";
+
+    });
+
+});
+
+const modal = document.getElementById("imageModal");
+const preview = document.getElementById("previewImage");
+const closeBtn = document.querySelector(".close");
+const prevBtn = document.querySelector(".prev");
+const nextBtn = document.querySelector(".next");
+const zoomInBtn = document.getElementById("zoomIn");
+const zoomOutBtn = document.getElementById("zoomOut");
+
+if (
+    modal &&
+    preview &&
+    closeBtn &&
+    prevBtn &&
+    nextBtn &&
+    zoomInBtn &&
+    zoomOutBtn
+) {
+
+    const images = [...document.querySelectorAll(".card img, .gallery-item img")];
+
+    let currentIndex = 0;
+    let scale = 1;
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+    let translateX = 0;
+    let translateY = 0;
+
+    images.forEach((img, index) => {
+
+        img.addEventListener("click", () => {
+            currentIndex = index;
+            showImage();
+            modal.style.display = "flex";
+        });
+
+    });
+
+    function showImage() {
+        preview.src = images[currentIndex].src;
+        preview.alt = images[currentIndex].alt;
+        resetZoom();
+    }
+
+    function nextImage() {
+        currentIndex = (currentIndex + 1) % images.length;
+        showImage();
+    }
+
+    function prevImage() {
+        currentIndex = (currentIndex - 1 + images.length) % images.length;
+        showImage();
+    }
+
+    function updateTransform() {
+
+        preview.style.transform =
+            `translate(${translateX}px, ${translateY}px) scale(${scale})`;
+
+        preview.style.cursor = scale > 1 ? "grab" : "default";
+    }
+
+    function resetZoom() {
+        scale = 1;
+        translateX = 0;
+        translateY = 0;
+        updateTransform();
+    }
+
+    zoomInBtn.addEventListener("click", () => {
+        scale = Math.min(scale + 0.2, 5);
+        updateTransform();
+    });
+
+    zoomOutBtn.addEventListener("click", () => {
+
+        scale = Math.max(scale - 0.2, 1);
+
+        if (scale === 1) {
+            translateX = 0;
+            translateY = 0;
+        }
+
+        updateTransform();
+
+    });
+
+    preview.addEventListener("wheel", function(e) {
+
+        if (modal.style.display !== "flex") return;
+
+        e.preventDefault();
+
+        scale += e.deltaY < 0 ? 0.2 : -0.2;
+        scale = Math.max(1, Math.min(scale, 5));
+
+        if (scale === 1) {
+            translateX = 0;
+            translateY = 0;
+        }
+
+        updateTransform();
+
+    }, { passive: false });
+
+    preview.addEventListener("dblclick", resetZoom);
+
+    preview.addEventListener("mousedown", function(e) {
+
+        if (scale <= 1) return;
+
+        isDragging = true;
+        startX = e.clientX - translateX;
+        startY = e.clientY - translateY;
+
+        preview.style.cursor = "grabbing";
+
+    });
+
+    document.addEventListener("mousemove", function(e) {
+
+        if (!isDragging) return;
+
+        translateX = e.clientX - startX;
+        translateY = e.clientY - startY;
+
+        updateTransform();
+
+    });
+
+    document.addEventListener("mouseup", function() {
+
+        isDragging = false;
+        preview.style.cursor = scale > 1 ? "grab" : "default";
+
+    });
+
+    function closeModal() {
+        modal.style.display = "none";
+        resetZoom();
+    }
+
+    closeBtn.addEventListener("click", closeModal);
+    nextBtn.addEventListener("click", nextImage);
+    prevBtn.addEventListener("click", prevImage);
+
+    modal.addEventListener("click", function(e) {
+
+        if (e.target === modal) {
+            closeModal();
+        }
+
+    });
+
+    document.addEventListener("keydown", function(e) {
+
+        if (modal.style.display !== "flex") return;
+
+        switch (e.key) {
+
+            case "Escape":
+                closeModal();
+                break;
+
+            case "ArrowRight":
+                nextImage();
+                break;
+
+            case "ArrowLeft":
+                prevImage();
+                break;
+
+            case "+":
+            case "=":
+                scale = Math.min(scale + 0.2, 5);
+                updateTransform();
+                break;
+
+            case "-":
+                scale = Math.max(scale - 0.2, 1);
+
+                if (scale === 1) {
+                    translateX = 0;
+                    translateY = 0;
+                }
+
+                updateTransform();
+                break;
+        }
+
+    });
+
+}
+</script>
+
+
+</div>
+<audio id="bgMusic" loop>
+    <source src="Heart and Soul.mp3" type="audio/mpeg">
+</audio>
+
+<script>
+document.addEventListener("click", function () {
+    const music = document.getElementById("bgMusic");
+    music.volume = 0.15;
+    music.play();
+}, { once: true });
+</script>
+</body>
+</html>

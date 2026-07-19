@@ -205,4 +205,55 @@ button{
     button{
         width:100%;
     }
+
+    
+.qty-spinner{
+    position: relative;
+    display: inline-block;
+    width: 90px;
+}
+
+.qty-spinner .qty{
+    width: 100%;
+    height: 40px;
+    text-align: center;
+    padding-right: 25px;
+    font-size: 16px;
+    border: 1px solid #999;
+    border-radius: 5px;
+    box-sizing: border-box;
+}
+
+.spinner-buttons{
+    position: absolute;
+    top: 1px;
+    right: 1px;
+    width: 22px;
+    height: calc(100% - 2px);
+    display: flex;
+    flex-direction: column;
+}
+
+.spinner-buttons button{
+    flex: 1;
+    border: none;
+    background: #f5f5f5;
+    cursor: pointer;
+    font-size: 10px;
+    line-height: 1;
+    padding: 0;
+}
+
+.spinner-buttons button:hover{
+    background: #ddd;
+}
+
+.spinner-buttons .plusBtn{
+    border-bottom: 1px solid #ccc;
+}
+
+.spinner-buttons .minusBtn{
+    border-top: 1px solid #ccc;
+}
+
 }

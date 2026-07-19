@@ -73,6 +73,7 @@ h1{
     background-size: cover;
     background-position: center;
     padding:25px;
+    margin-top: 50px;
     margin-bottom:25px;
     border-radius:10px;
     box-shadow:0 5px 15px rgba(0,0,0,.1);

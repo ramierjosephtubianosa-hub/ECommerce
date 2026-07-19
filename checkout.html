@@ -82,7 +82,7 @@
                         <option value="129">Mango Graham Shake</option>
                         <option value="129">Classic Avocado Shake</option>
                         <option value="129">Creamy Melon Shake</option>
-                        <option value="129">Strawberry Gream Shake</option>
+                        <option value="129">Strawberry Dream Shake</option>
                         <option value="135">Avisha's Special Halo Halo</option>
                         <option value="135">Avisha's Special Ube Macapuno Shake</option>
                         <option value="49">Cheese French Fries</option>
@@ -191,9 +191,11 @@
 const orderBody = document.getElementById("orderBody");
 const summaryBody = document.getElementById("summaryBody");
 const grandTotal = document.getElementById("grandTotal");
+const totalQty = document.getElementById("totalQty");
 
 if (orderBody && summaryBody && grandTotal) {
 
+    // Create New Row
     function createRow() {
         const row = orderBody.rows[0].cloneNode(true);
 
@@ -207,77 +209,21 @@ if (orderBody && summaryBody && grandTotal) {
         updateSummary();
     }
 
+    // Attach Events
     function attachEvents(row) {
+
         row.querySelector(".product").addEventListener("change", updateSummary);
         row.querySelector(".qty").addEventListener("input", updateSummary);
         row.querySelector(".shipping").addEventListener("change", updateSummary);
         row.querySelector(".payment").addEventListener("change", updateSummary);
 
         row.querySelector(".addBtn").addEventListener("click", createRow);
-    }
 
-    function updateSummary() {
+        row.querySelector(".deleteBtn").addEventListener("click", function () {
 
-        summaryBody.innerHTML = "";
-
-        let grand = 0;
-        let totalQty = 0;
-
-        document.querySelectorAll("#orderBody tr").forEach((row, index) => {
-
-            const product = row.querySelector(".product");
-            const qty = parseInt(row.querySelector(".qty").value) || 0;
-            const price = parseFloat(product.value) || 0;
-            const total = qty * price;
-
-            totalQty += qty;
-            grand += total;
-
-            const tr = document.createElement("tr");
-            tr.innerHTML = `
-                <td>${product.options[product.selectedIndex].text}</td>
-                <td>${qty}</td>
-                <td>₱${price.toFixed(2)}</td>
-                <td>₱${total.toFixed(2)}</td>
-                <td>
-                    <button type="button" onclick="removeRow(${index})">🗑</button>
-                </td>
-            `;
-
-            summaryBody.appendChild(tr);
-        });
-
-        document.getElementById("totalQty").textContent = totalQty;
-        grandTotal.innerHTML = `<strong>₱${grand.toFixed(2)}</strong>`;
-    }
-
-    window.removeRow = function(index) {
-        const rows = orderBody.rows;
-
-        if (rows.length > 1) {
-            rows[index].remove();
-        } else {
-            const row = rows[0];
-            row.querySelector(".product").selectedIndex = 0;
-            row.querySelector(".qty").value = 1;
-            row.querySelector(".shipping").selectedIndex = 0;
-            row.querySelector(".payment").selectedIndex = 0;
-        }
-
-        updateSummary();
-    };
-
-    // Delete button in order table
-    document.addEventListener("click", function(e) {
-
-        if (e.target.classList.contains("deleteBtn")) {
-
-            const rows = orderBody.rows;
-
-            if (rows.length > 1) {
-                e.target.closest("tr").remove();
+            if (orderBody.rows.length > 1) {
+                row.remove();
             } else {
-                const row = rows[0];
                 row.querySelector(".product").selectedIndex = 0;
                 row.querySelector(".qty").value = 1;
                 row.querySelector(".shipping").selectedIndex = 0;
@@ -285,10 +231,91 @@ if (orderBody && summaryBody && grandTotal) {
             }
 
             updateSummary();
-        }
+        });
+    }
 
-    });
+    // Update Summary
+    function updateSummary() {
 
+        summaryBody.innerHTML = "";
+
+        let grand = 0;
+        let qtyTotal = 0;
+
+        const summary = {};
+
+        document.querySelectorAll("#orderBody tr").forEach(row => {
+
+            const product = row.querySelector(".product");
+            const name = product.options[product.selectedIndex].text;
+            const price = parseFloat(product.value) || 0;
+            const qty = parseInt(row.querySelector(".qty").value) || 0;
+
+            qtyTotal += qty;
+            grand += qty * price;
+
+            if (!summary[name]) {
+                summary[name] = {
+                    qty: 0,
+                    price: price,
+                    total: 0
+                };
+            }
+
+            summary[name].qty += qty;
+            summary[name].total += qty * price;
+        });
+
+        Object.keys(summary).forEach(name => {
+
+            const item = summary[name];
+
+            const tr = document.createElement("tr");
+
+            tr.innerHTML = `
+                <td>${name}</td>
+                <td>${item.qty}</td>
+                <td>₱${item.price.toFixed(2)}</td>
+                <td>₱${item.total.toFixed(2)}</td>
+                <td>
+                    <button type="button"
+                        onclick="removeProduct('${name.replace(/'/g,"\\'")}')">
+                        🗑
+                    </button>
+                </td>
+            `;
+
+            summaryBody.appendChild(tr);
+        });
+
+        totalQty.textContent = qtyTotal;
+        grandTotal.innerHTML = `<strong>₱${grand.toFixed(2)}</strong>`;
+    }
+
+    // Remove Product from Summary
+    window.removeProduct = function(productName) {
+
+        document.querySelectorAll("#orderBody tr").forEach(row => {
+
+            const select = row.querySelector(".product");
+            const name = select.options[select.selectedIndex].text;
+
+            if (name === productName) {
+                if (orderBody.rows.length > 1) {
+                    row.remove();
+                } else {
+                    select.selectedIndex = 0;
+                    row.querySelector(".qty").value = 1;
+                    row.querySelector(".shipping").selectedIndex = 0;
+                    row.querySelector(".payment").selectedIndex = 0;
+                }
+            }
+        });
+
+        updateSummary();
+    };
+
+    // Initialize first row
     attachEvents(orderBody.rows[0]);
     updateSummary();
 }

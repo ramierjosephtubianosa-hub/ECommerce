@@ -163,14 +163,20 @@
         </thead>
 
 <tbody id="summaryBody"></tbody>
+<tfoot>
+    <tr class="total-qty">
+        <td colspan="3"><strong>Total Quantity</strong></td>
+        <td id="totalQty"><strong>0</strong></td>
+        <td></td>
+    </tr>
 
-        <tfoot>
-            <tr class="grand-total">
-                <td colspan="3"><strong>Grand Total</strong></td>
-                <td id="grandTotal"><strong>₱0.00</strong></td>
-                <td></td>
-            </tr>
-        </tfoot>
+    <tr class="grand-total">
+        <td colspan="3"><strong>Grand Total</strong></td>
+        <td id="grandTotal"><strong>₱0.00</strong></td>
+        <td></td>
+    </tr>
+</tfoot>
+        
     </table>
 </section>
 
@@ -190,10 +196,9 @@ const grandTotal = document.getElementById("grandTotal");
 if (orderBody && summaryBody && grandTotal) {
 
     function createRow() {
-    // Clone the first order row
+    
     const row = orderBody.rows[0].cloneNode(true);
 
-    // Reset values
     row.querySelector(".product").selectedIndex = 0;
     row.querySelector(".qty").value = 1;
     row.querySelector(".shipping").selectedIndex = 0;
@@ -201,10 +206,42 @@ if (orderBody && summaryBody && grandTotal) {
 
     orderBody.appendChild(row);
 
-    // Reattach button and input events
-    attachEvents(row);
+      attachEvents(row);
 
     updateSummary();
+    function updateSummary() {
+    summaryBody.innerHTML = "";
+
+    let grand = 0;
+    let totalQty = 0;
+
+    document.querySelectorAll("#orderBody tr").forEach((row) => {
+
+        const product = row.querySelector(".product");
+        const qty = parseInt(row.querySelector(".qty").value) || 0;
+
+        const price = parseFloat(product.value);
+        const total = price * qty;
+
+        grand += total;
+        totalQty += qty;
+
+        const summaryRow = document.createElement("tr");
+
+        summaryRow.innerHTML = `
+            <td>${product.options[product.selectedIndex].text}</td>
+            <td>${qty}</td>
+            <td>₱${price.toFixed(2)}</td>
+            <td>₱${total.toFixed(2)}</td>
+            <td><button type="button" class="removeSummary">🗑</button></td>
+        `;
+
+        summaryBody.appendChild(summaryRow);
+    });
+
+    document.getElementById("totalQty").textContent = totalQty;
+    grandTotal.innerHTML = `<strong>₱${grand.toFixed(2)}</strong>`;
+}
 }
 
  function attachEvents(row) {

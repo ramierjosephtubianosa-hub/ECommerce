@@ -129,6 +129,7 @@
                 <td>
                     <select class="shipping">
                         <option>Dine In</option>
+                        <option>TakeOut</option>
                         <option>Delivery</option>
                         <option>Pickup</option>
                     </select>
@@ -198,8 +199,7 @@ const totalQty = document.getElementById("totalQty");
 
 if (orderBody && summaryBody && grandTotal && totalQty) {
 
-    // Create New Row
-    function createRow() {
+        function createRow() {
         const row = orderBody.rows[0].cloneNode(true);
 
         row.querySelector(".product").selectedIndex = 0;
@@ -212,7 +212,7 @@ if (orderBody && summaryBody && grandTotal && totalQty) {
         updateSummary();
     }
 
-    // Attach Events
+   
     function attachEvents(row) {
 
         row.querySelector(".product").addEventListener("change", updateSummary);
@@ -237,7 +237,7 @@ if (orderBody && summaryBody && grandTotal && totalQty) {
         });
     }
 
-    // + and - Buttons (only added once)
+    
     document.addEventListener("click", function (e) {
 
         if (e.target.classList.contains("plusBtn")) {
@@ -257,7 +257,7 @@ if (orderBody && summaryBody && grandTotal && totalQty) {
 
     });
 
-    // Update Summary
+    
     function updateSummary() {
 
         summaryBody.innerHTML = "";
@@ -315,7 +315,7 @@ if (orderBody && summaryBody && grandTotal && totalQty) {
         grandTotal.innerHTML = `<strong>₱${grand.toFixed(2)}</strong>`;
     }
 
-    // Remove Product
+    
     window.removeProduct = function (productName) {
 
         document.querySelectorAll("#orderBody tr").forEach(row => {
@@ -339,7 +339,7 @@ if (orderBody && summaryBody && grandTotal && totalQty) {
         updateSummary();
     };
 
-    // Initialize
+    
     attachEvents(orderBody.rows[0]);
     updateSummary();
 }
@@ -357,7 +357,7 @@ document.addEventListener("click", function(e){
         }
     }
 
-    // Decrease quantity
+    
     if(e.target.classList.contains("minusBtn")){
         const row = e.target.closest("tr");
         const qty = row.querySelector(".qty");

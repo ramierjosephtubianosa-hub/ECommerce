@@ -1,0 +1,101 @@
+{
+  "shop": "Avisha's Hidden Haven",
+  "items": [
+    {
+      "id": 1,
+      "name": "Mango Graham Shake",
+      "category": "Drinks",
+      "description": "Pure Fruit Mango Smoothie with Crushed Graham, Real Mango Bits, and Thick Vanilla Ice cream on Top",
+      "price": "₱129",
+      "image": "Mango Graham Shake.png"
+    },
+    {
+      "id": 2,
+      "name": "Classic Avocado Shake",
+      "category": "Drinks",
+      "description": "Pure fruit Avocado Smoothie with Real Avocado Bits, and Thick Vanilla Ice cream on Top.",
+      "price": "₱129",
+      "image": "Classic Avocado Shake.jpg"
+    },
+    {
+      "id": 3,
+      "name": "Creamy Melon Shake",
+      "category": "Drinks",
+      "description": "Pure fruit Creamy melon smoothie with Real Melon Bits, and Thick Vanilla Ice cream on Top.",
+      "price": "₱129",
+      "image": "Creamy Melon Shake.jpg"
+    },
+    {
+      "id": 4,
+      "name": "Strawberry Dream Shake",
+      "category": "Drinks",
+      "description": "Pure fruit Strawberry smoothie with Real Strawberry Bits, and Thick Vanilla Ice cream on Top.",
+      "price": "₱129",
+      "image": "Strawberry DreamShake.jpg"
+    },
+    {
+      "id": 5,
+      "name": "Creamy and Float Series",
+      "category": "Drinks",
+      "description": "Creamy Drinks and Floats.",
+      "price": "₱85 - ₱115",
+      "image": "Creamy and Float.jpg"
+    },
+    {
+      "id": 6,
+      "name": "Avisha's Special Halo Halo",
+      "category": "Halo-Halo",
+      "description": "Milky Shaved Ice plus Pinipig, Nata de Coco, Caramel Syrup, Langka, Sweetened Banana, Macapuno, Gulaman with Leche Flan, Ube and Ice Cream Toppings.",
+      "price": "₱135",
+      "image": "Special Halo Halo.jpg"
+    },
+    {
+      "id": 7,
+      "name": "Avisha's Special Ube Macapuno Shake",
+      "category": "Halo-Halo",
+      "description": "Milky Shaved Ice plus Ube Macapuno, with Caramel Syrup, and Ice Cream Toppings.",
+      "price": "₱135",
+      "image": "Ube Macapuno.jpg"
+    },
+    {
+      "id": 8,
+      "name": "French Fries",
+      "category": "Snacks",
+      "description": "Fries (Cheese, Sourcream, BBQ) 150g Fries with Flavored Sauce.",
+      "price": "₱49",
+      "image": "Fries.png"
+    },
+    {
+      "id": 9,
+      "name": "Nachos",
+      "category": "Snacks",
+      "description": "Tortilla Chips with Mixed Vegetables with Cheese Sauce Top with Grated Cheese.",
+      "price": "₱59",
+      "image": "Nachos.jpg"
+    },
+    {
+      "id": 10,
+      "name": "Beef Shawarma",
+      "category": "Snacks",
+      "description": "Flavorful Beef shawarma with fresh vegetables, cheese sauce, and garlic sauce.",
+      "price": "₱69",
+      "image": "Beef Shawarma.jpg"
+    },
+    {
+      "id": 11,
+      "name": "Pizza Collection",
+      "category": "Pizza",
+      "description": "10\" Pizza\nAll Cheese - ₱189\nHam & Cheese - ₱195\nHawaiian - ₱198\nPepperoni - ₱225\nMeat & Pepper - ₱235\nShawarma - ₱269",
+      "price": "₱189 - ₱269",
+      "image": "Pizza.jpg"
+    },
+    {
+      "id": 12,
+      "name": "Roasted Pleasures",
+      "category": "Roasted",
+      "description": "Lechon Roll - 2.5 hrs prep, approx. 700g, ₱375 (set of 3: ₱1,109)\nBaby Back Ribs - 1.2 hrs prep, approx. 1200g, ₱375 (set of 3: ₱1,109)\nChick n' Roll - 2.5 hrs prep, approx. 1700g, ₱489 (set of 3: ₱1,449)",
+      "price": "₱375 - ₱1,449",
+      "image": "Roasted.jpg"
+    }
+  ]
+}

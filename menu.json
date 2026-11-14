@@ -7,6 +7,7 @@
       "category": "Drinks",
       "description": "Pure Fruit Mango Smoothie with Crushed Graham, Real Mango Bits, and Thick Vanilla Ice cream on Top",
       "price": "₱129",
+      "priceValue": 129,
       "image": "Mango Graham Shake.png"
     },
     {
@@ -15,6 +16,7 @@
       "category": "Drinks",
       "description": "Pure fruit Avocado Smoothie with Real Avocado Bits, and Thick Vanilla Ice cream on Top.",
       "price": "₱129",
+      "priceValue": 129,
       "image": "Classic Avocado Shake.jpg"
     },
     {
@@ -23,6 +25,7 @@
       "category": "Drinks",
       "description": "Pure fruit Creamy melon smoothie with Real Melon Bits, and Thick Vanilla Ice cream on Top.",
       "price": "₱129",
+      "priceValue": 129,
       "image": "Creamy Melon Shake.jpg"
     },
     {
@@ -31,14 +34,16 @@
       "category": "Drinks",
       "description": "Pure fruit Strawberry smoothie with Real Strawberry Bits, and Thick Vanilla Ice cream on Top.",
       "price": "₱129",
+      "priceValue": 129,
       "image": "Strawberry DreamShake.jpg"
     },
     {
       "id": 5,
       "name": "Creamy and Float Series",
       "category": "Drinks",
-      "description": "Creamy Drinks and Floats.",
+      "description": "Creamy Drinks and Floats. Prices range from ₱85 to ₱115 depending on the flavor; the order total uses the starting price.",
       "price": "₱85 - ₱115",
+      "priceValue": 85,
       "image": "Creamy and Float.jpg"
     },
     {
@@ -47,6 +52,7 @@
       "category": "Halo-Halo",
       "description": "Milky Shaved Ice plus Pinipig, Nata de Coco, Caramel Syrup, Langka, Sweetened Banana, Macapuno, Gulaman with Leche Flan, Ube and Ice Cream Toppings.",
       "price": "₱135",
+      "priceValue": 135,
       "image": "Special Halo Halo.jpg"
     },
     {
@@ -55,6 +61,7 @@
       "category": "Halo-Halo",
       "description": "Milky Shaved Ice plus Ube Macapuno, with Caramel Syrup, and Ice Cream Toppings.",
       "price": "₱135",
+      "priceValue": 135,
       "image": "Ube Macapuno.jpg"
     },
     {
@@ -63,6 +70,7 @@
       "category": "Snacks",
       "description": "Fries (Cheese, Sourcream, BBQ) 150g Fries with Flavored Sauce.",
       "price": "₱49",
+      "priceValue": 49,
       "image": "Fries.png"
     },
     {
@@ -71,6 +79,7 @@
       "category": "Snacks",
       "description": "Tortilla Chips with Mixed Vegetables with Cheese Sauce Top with Grated Cheese.",
       "price": "₱59",
+      "priceValue": 59,
       "image": "Nachos.jpg"
     },
     {
@@ -79,22 +88,88 @@
       "category": "Snacks",
       "description": "Flavorful Beef shawarma with fresh vegetables, cheese sauce, and garlic sauce.",
       "price": "₱69",
+      "priceValue": 69,
       "image": "Beef Shawarma.jpg"
     },
     {
       "id": 11,
-      "name": "Pizza Collection",
+      "name": "All Cheese Pizza",
       "category": "Pizza",
-      "description": "10\" Pizza\nAll Cheese - ₱189\nHam & Cheese - ₱195\nHawaiian - ₱198\nPepperoni - ₱225\nMeat & Pepper - ₱235\nShawarma - ₱269",
-      "price": "₱189 - ₱269",
+      "description": "10-inch pizza with all cheese.",
+      "price": "₱189",
+      "priceValue": 189,
       "image": "Pizza.jpg"
     },
     {
       "id": 12,
-      "name": "Roasted Pleasures",
+      "name": "Ham & Cheese Pizza",
+      "category": "Pizza",
+      "description": "10-inch pizza with ham and cheese.",
+      "price": "₱195",
+      "priceValue": 195,
+      "image": "Pizza.jpg"
+    },
+    {
+      "id": 13,
+      "name": "Hawaiian Pizza",
+      "category": "Pizza",
+      "description": "10-inch Hawaiian pizza.",
+      "price": "₱198",
+      "priceValue": 198,
+      "image": "Pizza.jpg"
+    },
+    {
+      "id": 14,
+      "name": "Pepperoni Pizza",
+      "category": "Pizza",
+      "description": "10-inch pepperoni pizza.",
+      "price": "₱225",
+      "priceValue": 225,
+      "image": "Pizza.jpg"
+    },
+    {
+      "id": 15,
+      "name": "Meat & Pepper Pizza",
+      "category": "Pizza",
+      "description": "10-inch pizza with meat and pepper.",
+      "price": "₱235",
+      "priceValue": 235,
+      "image": "Pizza.jpg"
+    },
+    {
+      "id": 16,
+      "name": "Shawarma Pizza",
+      "category": "Pizza",
+      "description": "10-inch shawarma pizza.",
+      "price": "₱269",
+      "priceValue": 269,
+      "image": "Pizza.jpg"
+    },
+    {
+      "id": 17,
+      "name": "Lechon Roll",
       "category": "Roasted",
-      "description": "Lechon Roll - 2.5 hrs prep, approx. 700g, ₱375 (set of 3: ₱1,109)\nBaby Back Ribs - 1.2 hrs prep, approx. 1200g, ₱375 (set of 3: ₱1,109)\nChick n' Roll - 2.5 hrs prep, approx. 1700g, ₱489 (set of 3: ₱1,449)",
-      "price": "₱375 - ₱1,449",
+      "description": "2.5 hrs preparation, approx. 700g. Set of 3: ₱1,109.",
+      "price": "₱375",
+      "priceValue": 375,
+      "image": "Roasted.jpg"
+    },
+    {
+      "id": 18,
+      "name": "Baby Back Ribs",
+      "category": "Roasted",
+      "description": "1.2 hrs preparation, approx. 1200g. Set of 3: ₱1,109.",
+      "price": "₱375",
+      "priceValue": 375,
+      "image": "Roasted.jpg"
+    },
+    {
+      "id": 19,
+      "name": "Chick n' Roll",
+      "category": "Roasted",
+      "description": "2.5 hrs preparation, approx. 1700g. Set of 3: ₱1,449.",
+      "price": "₱489",
+      "priceValue": 489,
       "image": "Roasted.jpg"
     }
   ]
